@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <main role="main" class="container">
+      <h1>Keyboard navigation in list using up/down</h1>
+      <p>This is a simple implementation of a list that is controlled by using up and down arrows on the keyboard. Normally, I would have relied on the normal tabindex in the document, but in some cases this can be practical. If you have simple needs I allways recommend to use standard elements, like the select-element.</p><p>This method should be safe for modern browsers. No jQuery or other depenancies needed.</p>
+      
+      <h2>Demo</h2>
+      <p>Ipsum lorem <a href="#">normal link</a> and content.</p>
+      
+      <h3>The list itself</h3>
+      <ul tabindex="0" class="keyboard-nav__list">
+        <li><a href="#1" tabindex="-1" class="keyboard-nav__item">One</a></li>
+        <li><a href="#2" tabindex="-1" class="keyboard-nav__item">Two</a></li>
+        <li><a href="#3" tabindex="-1" class="keyboard-nav__item">Three</a></li>
+        <li><a href="#4" tabindex="-1" class="keyboard-nav__item">Four</a></li>
+        <li><a href="#5" tabindex="-1" class="keyboard-nav__item">Five</a></li>
+        <li><a href="#6" tabindex="-1" class="keyboard-nav__item">Six</a></li>
+      </ul>
+
+      <a href="#">One</a>
+      <a href="#">Two</a>
+      <a href="#">Three</a>
+    </main>
+    
+    <script>
+      document.onkeydown = moveFocus;
+      
+      function moveFocus(e) {
+
+          // variables
+          var list = document.querySelector('.keyboard-nav__list'),
+              listElements = list.getElementsByTagName('a'),
+              num_li = Array.prototype.slice.call(listElements),
+              el = 0;
+        
+          if( document.activeElement.classList.contains("keyboard-nav__item") ) {
+            
+            // get index of current active element
+            el = num_li.indexOf(document.activeElement);
+            
+          }
+        
+          if (e.keyCode == 38 || e.keyCode == 40) {
+            
+            if (document.activeElement.classList.contains("keyboard-nav__list")) {
+              el=0;
+              num_li[el].focus();
+            } else {
+              
+              // only move focus if focus is on other element in keyboard-nav-list
+              if(document.activeElement.classList.contains("keyboard-nav__item")){
+                var key = (window.event) ? event.keyCode : e.keyCode;
+                switch (key) {
+                    case 40:
+                        el++;
+                        break;
+                    case 38:
+                        el--;
+                        break;
+                    default:
+                      break;
+                }
+                
+                // if bigger thant # of items, set to first item
+                if (el+1 > num_li.length) el = 0;          
+
+                // if smaller than 0, set to last item
+                if (el < 0) el = num_li.length-1;
+                
+                num_li[el].focus();
+              }
+            }
+          }
+      };
+    </script>
+  </body>
+</html>

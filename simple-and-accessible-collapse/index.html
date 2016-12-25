@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+      .jsa-collapse__content {
+        height: 0px;
+        overflow: hidden;
+      }
+      
+      .jsa-collapse__content.jsa-collapse__content--open {
+        height: auto;
+        animation: appearAndFloat .5s ease-in-out;
+      }
+      
+      @-webkit-keyframes appearAndFloat {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes appearAndFloat {
+         0% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main role="main" class="container">
+      <h1>Dead simple collapse</h1>
+      <p>This is a dead simple and accessible collapse that uses css3 for animations. <br><b>Note!</b> "aria-controls" on trigger element must match the id on the collapsable content.</p>
+      
+      <h2>About</h2>
+      <p>This example need HTML, CSS and JS to work. Evrything is inlined in the document.</p>
+      
+      <h3>Demo</h3>
+      <button aria-controls="demo-collapse" class="jsa-collapse" aria-expanded="false">Trigger collapse</button>
+      <div class="jsa-collapse__content" id="demo-collapse">
+        <h4>Demo collapse 1</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      
+      
+      <button aria-controls="demo-collapse2" class="jsa-collapse" aria-expanded="false">Trigger collapse</button>
+      <div class="jsa-collapse__content" id="demo-collapse2">
+        <h4>Demo collapse2</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      
+      
+    </main>
+    
+    <script>
+      var controls = document.querySelectorAll('.jsa-collapse');
+      
+      for (var i = 0; i < controls.length; i++) {
+        controls[i].addEventListener('click', function(event) {
+          var aria_state = (this.getAttribute("aria-expanded") === "true" ? false : true);
+          this.setAttribute("aria-expanded", aria_state);
+          var collapse = document.getElementById(this.getAttribute("aria-controls"));
+          collapse.classList.toggle("jsa-collapse__content--open");
+        });
+      }
+      
+    </script>
+  </body>
+</html>

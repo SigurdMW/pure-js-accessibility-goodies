@@ -1,0 +1,1 @@
+* Dead simple collapse. Aria hidden and aria controls.

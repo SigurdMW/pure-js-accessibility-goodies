@@ -3,9 +3,10 @@ Pure JS Accessibility Goodies is a collection of small code samples that I find 
 
 Feel free to use code you find here in your own projects. Please report any issues you find!
 
-[View demo](https://sigurdmw.github.io/pure-js-accessibility-goodies/)
+[View project pages](https://sigurdmw.github.io/pure-js-accessibility-goodies/)
 
 
 
-## Content
+## Demo and docs
 [Navigate list using up and down arrows on keyboard](https://sigurdmw.github.io/pure-js-accessibility-goodies/keyboard-nav-list/basic-keyboard-nav-list.html)
+[Dead simple collapse](https://sigurdmw.github.io/pure-js-accessibility-goodies/simple-and-accessible-collapse/index.html)
